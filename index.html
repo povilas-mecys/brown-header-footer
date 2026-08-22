@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brown University</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://www.brown.edu/themes/custom/brown/static/favicon-32x32.png"
+    />
+    <style>
+      /* ==========================================================================
+      Header & Footer
+      ========================================================================== */
+
+      :root {
+        --color-brown: #4e3629;
+        --color-brown-dark: #422d22;
+        --color-red: #c00404;
+        --color-yellow: #ffc72c;
+        --color-sand: #d6d0bc;
+        --color-rule: #634e40;
+        --color-white: #fff;
+        --font: sans-serif;
+        --max-width: 1370px;
+        --gutter: 24px;
+      }
+
+      /* Reset ------------------------------------------------------------------ */
+
+      header *,
+      footer * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      /* Shared --------------------------------------------------------------- */
+
+      header,
+      footer {
+        background: var(--color-brown);
+        color: var(--color-white);
+        font-family: var(--font);
+
+        &::before {
+          content: '';
+          display: block;
+          height: 4px;
+          background: linear-gradient(
+            to right,
+            var(--color-red),
+            var(--color-brown)
+          );
+        }
+
+        & > div {
+          display: flex;
+          max-width: var(--max-width);
+          margin: 0 auto;
+          padding: 0 var(--gutter);
+        }
+
+        & a:hover {
+          color: var(--color-white);
+          text-decoration: underline dotted;
+          text-underline-offset: 5px;
+        }
+        & a:active {
+          color: var(--color-yellow);
+          text-decoration: underline dotted;
+          text-underline-offset: 5px;
+        }
+      }
+
+      header a:focus-visible,
+      footer a:focus-visible,
+      body > a:focus-visible,
+      main:focus-visible {
+        outline: 2px solid #005fcc;
+        outline-offset: 2px;
+      }
+
+      body > a {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 100;
+        padding: 10px 20px;
+        background: #f0f2f3;
+        color: #000;
+        font-family: var(--font);
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+        transform: translate(-50%, -200%);
+        transition: transform 0.35s;
+
+        &:hover,
+        &:focus,
+        &:active {
+          transform: translate(-50%, 25px);
+        }
+      }
+
+      /* Header ----------------------------------------------------------------- */
+
+      header {
+        & > div {
+          flex-wrap: wrap;
+          align-items: center;
+          column-gap: 16px;
+          transition: column-gap 0.25s ease;
+
+          & > div {
+            display: flex;
+            align-items: center;
+            column-gap: 16px;
+            padding: 16px 0;
+            transition: column-gap 0.25s ease;
+
+            & > a:first-child {
+              flex-shrink: 0;
+              line-height: 0;
+
+              & img {
+                display: block;
+                width: 90px;
+                height: auto;
+                transition: width 0.25s ease;
+              }
+            }
+
+            & > a + a {
+              display: flex;
+              align-self: stretch;
+              align-items: center;
+              padding-left: 16px;
+              border-left: 1px solid rgb(255 255 255 / 0.45);
+              color: var(--color-white);
+              font-size: 14px;
+              text-decoration: none;
+              transition:
+                padding-left 0.25s ease,
+                font-size 0.25s ease;
+            }
+          }
+        }
+
+        & nav {
+          display: flex;
+          flex: 1 0 100%;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin: 0 calc(var(--gutter) * -1);
+          padding: 12px var(--gutter);
+          background-color: var(--color-brown-dark);
+          transition:
+            margin 0.25s ease,
+            padding 0.25s ease,
+            background-color 0.25s ease;
+
+          & a {
+            color: var(--color-white);
+            font-size: 12px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition:
+              font-size 0.25s ease,
+              letter-spacing 0.25s ease;
+
+            &[aria-current] {
+              color: var(--color-yellow);
+              text-decoration: underline dotted;
+              text-underline-offset: 5px;
+              &:hover,
+              &:focus {
+                color: var(--color-white);
+              }
+              &:active {
+                color: var(--color-yellow);
+              }
+            }
+          }
+        }
+
+        @media (min-width: 60rem) {
+          & > div {
+            gap: 24px;
+
+            & > div {
+              column-gap: 24px;
+
+              & > a:first-child {
+                padding: 0;
+
+                & img {
+                  width: 140px;
+                }
+              }
+
+              & > a + a {
+                padding-left: 24px;
+                font-size: 18px;
+              }
+            }
+          }
+
+          & nav {
+            flex: 1;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+
+            & a {
+              font-size: 14px;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      /* Footer ------------------------------------------------------------------ */
+
+      footer {
+        & > div {
+          flex-direction: column;
+          gap: 24px;
+          padding-top: 40px;
+          padding-bottom: 40px;
+          transition: gap 0.25s ease;
+        }
+
+        & h2 {
+          margin: 0 0 16px;
+          color: var(--color-sand);
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+        }
+
+        & address {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 16px;
+          font-style: normal;
+
+          & a {
+            width: fit-content;
+            padding: 6px 4px;
+            margin: -6px -4px;
+            color: var(--color-white);
+            text-decoration: none;
+          }
+        }
+
+        & nav {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          padding-top: 24px;
+          border-top: 1px solid var(--color-rule);
+          transition: gap 0.25s ease;
+
+          & a {
+            padding: 6px 4px;
+            margin: -6px -4px;
+            color: var(--color-yellow);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+        }
+
+        & > p {
+          margin: 0;
+          padding: 16px;
+          background: rgb(0 0 0 / 0.16);
+          color: var(--color-white);
+          font-size: 14px;
+          text-align: center;
+        }
+
+        @media (min-width: 50rem) {
+          & > div {
+            flex-direction: row;
+            align-items: center;
+            gap: 04px;
+          }
+
+          & nav {
+            flex: 1;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 40px;
+          }
+        }
+      }
+
+      /* Transition --------------- */
+
+      @media (prefers-reduced-motion: reduce) {
+        header,
+        header *,
+        footer,
+        footer * {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main">Skip to main content</a>
+
+    <header>
+      <div>
+        <div>
+          <a href="https://www.brown.edu/">
+            <img src="/logo.png" alt="Brown University Logo" />
+          </a>
+
+          <a href="https://it.brown.edu">Office of Information Technology</a>
+        </div>
+
+        <nav aria-label="Primary">
+          <a href="/tools" aria-current="page">Tools &amp; Services</a>
+          <a href="/alerts">Alerts</a>
+          <a href="/about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1"><p>Content goes here</p></main>
+
+    <footer>
+      <div>
+        <div>
+          <h2>Brown University</h2>
+          <address>
+            <a href="https://maps.brown.edu/">Providence RI 02912</a>
+            <a href="tel:+14018631000">401-863-1000</a>
+          </address>
+        </div>
+
+        <nav aria-label="Footer">
+          <a href="https://www.brown.edu/a-z">A to Z</a>
+          <a href="https://www.brown.edu/campus-life/support/public-safety/"
+            >Campus Safety</a
+          >
+          <a href="https://accessibility.brown.edu/">Accessibility</a>
+        </nav>
+      </div>
+      <p>&copy; Brown University</p>
+    </footer>
+  </body>
+</html>
